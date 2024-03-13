@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def f(t,y):
-    return np.exp(2 * t) * y 
+    return y - t**2 + 1
 
 def euler(t,y,h,n):
     for k in range(n):
@@ -26,21 +26,27 @@ def euler_implicito(t,y,h,n):
 
     return y
 
+
 a = 0
-b = 1
-n = 10
+b = 2
+n = 100
 h = (b - a) / n
-grid = np.linspace(a,b,1000)
-t = np.linspace(0,1,n+1)
+
+grid = np.linspace(a,b,n+1)
+t = np.linspace(a,b,n+1)
 y = np.zeros(n+1)
-y[0] = 1
+y[0] = 0.5
 
-exact = np.exp((np.exp(2 * grid) - 1) / 2)
+exact = t**2 + 2*t + 3 - (5/2)*np.exp(t)
 
-plt.plot(grid,exact,"k")
-plt.plot(t,euler(t,y,h,n),"r")
-plt.plot(t,euler_modificado(t,y,h,n),"b")
-plt.plot(t,euler_implicito(t,y,h,n))
+y_euler = euler(t,y,h,n)
+
+plt.plot(t,y_euler,"r",label="Euler")
+# plt.plot(t,euler_modificado(t,y,h,n),"b",label="Euler mod.")
+# plt.plot(t,euler_implicito(t,y,h,n),"g",label="Euler imp.")
+plt.plot(grid,exact,"k",lw=2)
+plt.legend()
 plt.show()
+
 
 
