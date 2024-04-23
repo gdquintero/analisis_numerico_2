@@ -10,23 +10,17 @@ def backward_sustitution(A,b,n,x):
 
     return x
 
-A = np.array([
-    [1,2,-1,2],
-    [0,2,3,1],
-    [0,0,-2,1],
-    [0,0,0,2]])
-
-b = np.array([1,1,1,1])
-
-
 # A = np.array([
-#     [2,1,-3],
-#     [0,5,4],
-#     [0,0,3]
-#     ])
+#     [1,2,-1,2],
+#     [0,2,3,1],
+#     [0,0,-2,1],
+#     [0,0,0,2]])
 
-# b = np.array([4,2,6])
-n = len(b)
+# b = np.array([1,1,1,1])
+
+A = np.loadtxt("superior.txt")
+n = np.shape(A)[0]
+b = np.ones(n)
 x = np.zeros(n)
 
 backward_sustitution(A,b,n,x)

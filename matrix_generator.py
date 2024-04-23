@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import random
 
-n = 10
+n = 50
 
 A = np.zeros((n,n))
 B = np.zeros((n,n))
